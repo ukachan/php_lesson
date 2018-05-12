@@ -1,25 +1,27 @@
 <?php
-	session_start();
-	var_dump($_SESSION);
+session_start();
+
+$userid = '0707';
+$username = 'komuro';
+$urlparam = $userid . '&' . $username;
+
+$_SESSION['userid'] = $userid;
+$_SESSION['username'] = $username;
+
+if (empty($_SESSION['count'])) {
+    $_SESSION['count'] = 1;
+} else {
+    $_SESSION['count']++;
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-	<meta charset="utf-8">
-	<title>session</title>
-</head>
-<body>
-	<div>商品登録</div>
-	<form action="./regist.php" method="post">
-		<table>
-			<tbody><tr>
-				<td>商品名</td>
-				<td><input type="text" name="syouhin"></td>
-				<td>
-					<input type="submit" value="登録">
-				</td>
-			</tr></tbody>
-		</table>
-	</form>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>session practice</title>
+    </head>
+    <body>
+        <p><?php echo $_SESSION['count']; ?>回目の訪問</p>
+        <p>続けるには<a href="nextpage.php?<?php echo htmlspecialchars($urlparam); ?>">ここをクリック</p>
+    </body>
 </html>
