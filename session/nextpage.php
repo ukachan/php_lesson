@@ -13,6 +13,7 @@ echo($userid . $username . '/' . $cookie);
         <title>nextpage</title>
     </head>
     <body>
+        <p><?php var_dump($_SESSION); ?>
         <p>リセットするには<a href="./unset.php">ここをクリック</a>
     </body>
 </html>
